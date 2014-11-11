@@ -1,18 +1,29 @@
-var inputBox = document.querySelector('#action');
+var makePlayer = function(name, health){
 
-console.log(inputBox.tagName);
-console.log(inputBox.parentNode.tagName);
-
-var title = document.querySelector('#header')
-title.innerHTML = "Hello!"
-
-var newParagraph = function(txt){
-  var newPara = document.createElement("p");
-  var newText = document.createTextNode(txt);
-  newPara.appendChild(newText);
-  document.body.appendChild(newPara);
+  var newPlayer{
+    name: name,
+    health: health,
+    items: [];
+  }
+   
 }
-var checkItem = function(){
-  var inv = document.querySelector("#inventory");
-  output.innerHTML = "You currently have in your posession: " + inv;
+
+makePlayer.pickUp = function(item){
+  this.item.push(items);
+}
+
+var interpret = function(str){
+  var trimmed = str.trim();
+  var split = trimmed.split(" ");
+  var a = split.shift();
+  return [a , parts.join(" ")];
+}
+
+var execute = function(list){
+  var action = list[0];
+  list.splice(0,1);
+  makePlayer.action = function(action){
+  
+  
+  }
 }
