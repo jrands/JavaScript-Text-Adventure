@@ -3,7 +3,7 @@ TextAdventure-Base
 
 An example that offers ideas on how to get started with a JavaScript-based HTML5 text adventure game.
 
-Working Title: 
+Working Title: Escape the Dead
 
 Opening: The player wakes up in a hospital room, dehydrated and weak. You call for a nurse, but no one comes. You struggle to search your memory, and the last thing you remember is falling in a river and drowning. The player chooses their name, their gender, and a starting item. The player will be able to examine the room, and will have to go to bathroom and drink water before being able to leave.
 
