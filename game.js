@@ -1,29 +1,58 @@
-var makePlayer = function(name, health){
+// Global player object (later this will no longer be global)
+var player = {
+	items: [],
+	pickup: function(item){
+		this.items.push(item);
+	},
+	drop: function(item){
+		var pos = this.items.indexOf(item);
+		if (pos >= 0) {
+			this.items.splice(pos, 1);
+		}
+	}
+}
 
-  var newPlayer{
-    name: name,
-    health: health,
-    items: [];
+// parse and normalize the user input string
+function interpret (input) {
+  var i1 = input.trim().toLowerCase();
+  var i2 = i1.split(" ");
+  var result = [];
+  result.push(i2.shift());
+  result.push(i2.join(" "));
+  return result;
+}
+
+// perform the desired player action
+function execute (command) {
+	var action = command.shift();
+  var object = command.shift();
+  var method = player[action];
+  method(object);
+}
+
+// display any results/changes on the page
+function report () {
+  var note = document.querySelector('#inventory > ul');
+  for (var i = 0; i < player.items.length; i++){
+    note.innerHTML = player.items[i];
   }
-   
 }
 
-makePlayer.pickUp = function(item){
-  this.item.push(items);
+// run one pass of the game loop
+function gameStep (input) {
+	var cmd = interpret(input); // parse the user input
+	var result = execute(cmd); // run the desired command
+	report(result); // display the results on the screen
 }
 
-var interpret = function(str){
-  var trimmed = str.trim();
-  var split = trimmed.split(" ");
-  var a = split.shift();
-  return [a , parts.join(" ")];
+var gameStart = function() {
+	var inputBox = document.querySelector("input");
+	inputBox.addEventListener("keyup", function(event){
+		if (event.keyCode === 13) {
+			gameStep(this.value);
+		}
+	});
 }
 
-var execute = function(list){
-  var action = list[0];
-  list.splice(0,1);
-  makePlayer.action = function(action){
-  
-  
-  }
-}
+window.onload = gameStart; // game starts only after the page is loaded
+
