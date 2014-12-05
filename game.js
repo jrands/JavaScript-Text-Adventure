@@ -1,6 +1,6 @@
 // Global player object (later this will no longer be global)
 var player = {
-	items: [],
+	items: ["tool kit", "light"],
 	pickup: function(item){
 		this.items.push(item);
 	},
