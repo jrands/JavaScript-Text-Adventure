@@ -13,7 +13,7 @@ var map = {}
 
 map.locations = {
 
-  area0: new Location ("ER Room 107", "The Room you recently woke up in. You spent the last few days in this room while in your coma. It is bleak and gloomy; the window lets in very little light. The old CRT TV hanging from the ceiling is flickering and giving off an unsettling static noise. There is a dresser pushed up against the door that leads to the hallway. There is another door by the window that leads to the bathroom."),
+  area0: new Location ("ER Room 107", "You awaken to find yourself in a bleak and gloomy hospital room. You've been in a coma the past few days, unable to recall how you got here. The old CRT TV hanging from the ceiling is flickering and giving off an unsettling static noise. There is a dresser pushed up against the door that leads to the hallway. There is another door by the window that leads to the bathroom."),
 
   area1: new Location ("Bathroom", "The bathroom is very small; it contains a toilet, sink, and a shower. The faucet is dripping slowly. "),
 
@@ -25,7 +25,7 @@ map.locations = {
   
   area5: new Location ("Office", "An office belonging to head surgeon. The charts and graphs that line the wall make little sense to you. The desk with all it's knick-knacks in the center of the room catches your eye."),
   
-  area6: new Location ("Lobby",""),
+  area6: new Location ("Lobby","You find yourself in the hostpital lobby. There are chairs and tables lined with magazines."),
   
   area7: new Location ("Parking Lot", "The parking lot is virtually empty. The few remaining cars have been siphoned of gas.")
 };
@@ -45,5 +45,15 @@ map.connections = [
   
 ];
 
-var note = document.querySelector('#descrip');
-note.innerHTML = map.locations.area0.description;
+var getLocation = function(){
+  return map.locations.area0;
+}
+
+var displayLoc = function(loc){
+  var scene = document.querySelector('#descrip');
+  var currentLoc = document.querySelector('#loc');
+  scene.innerHTML = loc.description;
+  currentLoc.innerHTML = "Current Location: " + loc.name;
+}
+
+displayLoc(getLocation());
