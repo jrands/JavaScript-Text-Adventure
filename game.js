@@ -1,7 +1,9 @@
-// Global player object (later this will no longer be global)
+
+var note = document.querySelector('#inventory > ul');
+
 var player = {
 	items: [],
-	location: "",
+	location: map.arr[0],
 	pickup: function(item){
 		this.items.push(item);
 	},
@@ -10,7 +12,14 @@ var player = {
 		if (pos >= 0) {
 			this.items.splice(pos, 1);
 		}
-	}
+	},
+	moveto: function(loc){
+	  for (var i = 0; i < map.arr.length; i++){
+	    if (map.arr[i].name === loc){
+	      this.location = map.arr[i];
+	    }
+	  }
+	},
 }
 
 // parse and normalize the user input string
@@ -30,11 +39,10 @@ function execute (command) {
 
 // display any results/changes on the page
 function report () {
-  var note = document.querySelector('#inventory > ul');
   for (var i = 0; i < player.items.length; i++){
     note.innerHTML = player.items[i];
   }
-  console.log(map.locations.area0);
+  console.log(player.location);
   console.log(player.items);
 }
 
@@ -42,11 +50,12 @@ function report () {
 function gameStep (input) {
 	var cmd = interpret(input); // parse the user input
 	var result = execute(cmd); // run the desired command
+	displayLoc(player.location);
 	report(result); // display the results on the screen
-	
 }
 
 var gameStart = function() {
+  displayLoc(map.arr[0]);
 	var inputBox = document.querySelector("input");
 	inputBox.addEventListener("keyup", function(event){
 		if (event.keyCode === 13) {
@@ -55,5 +64,5 @@ var gameStart = function() {
 	});
 }
 
-window.onload = gameStart; // game starts only after the page is loaded
+window.onload = gameStart;
 
