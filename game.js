@@ -8,15 +8,15 @@ var player = {
 	pickup: function(item){
 	  console.log(this.location.items[0]);
 	  var contains = false;
-	  for(var i; i < this.location.items.length; i++){
+	  for(var i = 0; i < this.location.items.length; i++){
 	    if(this.location.items[i] === item){
 	      contains = true;
 		    this.items.push(item);
 		  }
-		 }
-		 if(contains === false){
-		   alert("You search the room but cannot find such an item.");
-		 }
+		}
+		if(contains === false){
+		  alert("You search the room but cannot find such an item.");
+		}
 	},
 	
 	drop: function(item){
