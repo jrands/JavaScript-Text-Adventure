@@ -1,18 +1,31 @@
 
 var scene = document.querySelector('#descrip');
+var note = document.querySelector('#items');
 
 var player = {
 	items: [],
 	location: map.arr[0],
 	pickup: function(item){
-		this.items.push(item);
+	  console.log(this.location.items[0]);
+	  var contains = false;
+	  for(var i; i < this.location.items.length; i++){
+	    if(this.location.items[i] === item){
+	      contains = true;
+		    this.items.push(item);
+		  }
+		 }
+		 if(contains === false){
+		   alert("You search the room but cannot find such an item.");
+		 }
 	},
+	
 	drop: function(item){
 		var pos = this.items.indexOf(item);
 		if (pos >= 0) {
 			this.items.splice(pos, 1);
 		}
 	},
+	
 	moveto: function(loc){
     var contains = false;
     for (var i = 0; i < map.arr.length; i++){
@@ -27,9 +40,11 @@ var player = {
       alert("You cannot go to this location.");
     }
   },
-  examine: function(item){
+  
+  use: function(item){
     
   },
+  
 	charCreate: function(){
 	  scene.innerHTML = "... \n my name?"
 	}
