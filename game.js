@@ -1,5 +1,5 @@
 
-var note = document.querySelector('#inventory > ul');
+var scene = document.querySelector('#descrip');
 
 var player = {
 	items: [],
@@ -14,12 +14,25 @@ var player = {
 		}
 	},
 	moveto: function(loc){
-	  for (var i = 0; i < map.arr.length; i++){
-	    if (map.arr[i].name === loc){
-	      this.location = map.arr[i];
-	    }
-	  }
-	},
+    var contains = false;
+    for (var i = 0; i < map.arr.length; i++){
+      if (map.arr[i].name === loc){
+        if( isConnected(map.arr.indexOf(this.location),i) === true){
+          contains = true;
+          this.location = map.arr[i];
+        }
+      }
+    }
+    if( contains === false ){
+      alert("You cannot go to this location.");
+    }
+  },
+  examine: function(item){
+    
+  },
+	charCreate: function(){
+	  scene.innerHTML = "... \n my name?"
+	}
 }
 
 // parse and normalize the user input string
@@ -55,7 +68,8 @@ function gameStep (input) {
 }
 
 var gameStart = function() {
-  displayLoc(map.arr[0]);
+  //charCreate();
+  displayLoc(player.location);
 	var inputBox = document.querySelector("input");
 	inputBox.addEventListener("keyup", function(event){
 		if (event.keyCode === 13) {
