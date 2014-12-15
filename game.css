@@ -1,6 +1,7 @@
 html {
 font-family: cursive;
 text-align: center;
+background-color: black;
 }
 
 html, body {
@@ -8,6 +9,7 @@ font: italic bold 12px/30px Georgia, serif;
 height: 100%;
 padding: 0;
 margin: 0;
+color: #D0D0D0;
 }
 
 header, main, footer, aside {
@@ -58,6 +60,7 @@ output, input {
 font:italic bold 12px/30px Georgia, serif;
 font-size: 250%;
 font-family: cursive;
+background-color: black;
 }
 
 main > section {
