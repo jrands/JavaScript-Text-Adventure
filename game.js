@@ -43,6 +43,14 @@ var player = {
   
   use: function(item){
     
+    switch(item){
+      case "remote": caseRemote(); break;
+      case "mop": caseMop();
+        break;
+      default: alert("You cannot use that item now!");
+    }
+    
+    
   },
   
 	charCreate: function(){
@@ -67,18 +75,24 @@ function execute (command) {
 
 // display any results/changes on the page
 function report () {
-  for (var i = 0; i < player.items.length; i++){
-    note.innerHTML = player.items[i];
-  }
+  displayItems();
+  displayLoc(player.location);
   console.log(player.location);
   console.log(player.items);
+}
+
+function displayItems (){
+  for (var i = 0; i < player.items.length; i++){
+    var item = document.createElement("li");
+    item.textContent = player.items[i];
+  }
+  note.appendChild(item);
 }
 
 // run one pass of the game loop
 function gameStep (input) {
 	var cmd = interpret(input); // parse the user input
 	var result = execute(cmd); // run the desired command
-	displayLoc(player.location);
 	report(result); // display the results on the screen
 }
 
