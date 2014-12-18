@@ -5,7 +5,7 @@ var note = document.querySelector('#items');
 var player = {
 	items: [],
 	location: map.arr[0],
-	pickup: function(item){
+	take: function(item){
 	  console.log(this.location.items[0]);
 	  var contains = false;
 	  for(var i = 0; i < this.location.items.length; i++){
@@ -27,16 +27,26 @@ var player = {
 	},
 	
 	moveto: function(loc){
-    var contains = false;
+    var contains = false; var contains2 = false;
     for (var i = 0; i < map.arr.length; i++){
       if (map.arr[i].name === loc){
         if( isConnected(map.arr.indexOf(this.location),i) === true){
-          contains = true;
-          this.location = map.arr[i];
+          if(loc !== map.arr[5].name){
+            contains = true;
+            this.location = map.arr[i];
+          } //checks if player is trying to move to office
+          else if(has("keys") === false){
+            alert("This door is locked."); 
+            var contains2 = true;
+          }
+          else{
+            this.location = map.arr[5];
+            var contains2 = true;
+          }
         }
       }
     }
-    if( contains === false ){
+    if( contains === false && contains2 === false){
       alert("You cannot go to this location.");
     }
   },
@@ -45,15 +55,16 @@ var player = {
     
     switch(item){
       case "remote": caseRemote(); break;
-      case "mop": caseMop();
-        break;
-      default: alert("You cannot use that item now!");
+      case "mop": caseMop(); break;
+      case "safe": caseSafe(); break;
+      default: alert("You don't have that item in your inventory!");
     }
     
     
   },
   
 	charCreate: function(){
+
 	  scene.innerHTML = "... \n my name?"
 	}
 }
@@ -82,11 +93,12 @@ function report () {
 }
 
 function displayItems (){
+  note.innerHTML = "";
   for (var i = 0; i < player.items.length; i++){
     var item = document.createElement("li");
     item.textContent = player.items[i];
+    note.appendChild(item);
   }
-  note.appendChild(item);
 }
 
 // run one pass of the game loop
