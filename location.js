@@ -13,9 +13,7 @@ var map = {}
 
 map.locations = {
 
-  //emptyloc: new Location ("", "That location doesn't exist.", ),
-
-  area0: new Location ("room 107", "You awaken to find yourself in a bleak and gloomy hospital room. You've been in a coma the past few days, unable to recall how you got here. The old CRT TV hanging from the ceiling is flickering and giving off an unsettling static noise. There is a remote on the dresser next to you.", ["remote", "keys"]),
+  area0: new Location ("room 107", "You awaken to find yourself in a bleak and gloomy hospital room. You've been in a coma the past few days, unable to recall how you got here. The old CRT TV hanging from the ceiling is flickering and giving off an unsettling static noise. There is a remote on the dresser next to you.", ["remote"]),
 
   area1: new Location ("bathroom", "The bathroom of room  107 is very small; it contains a toilet, sink, and a shower. It's been days since you had water, you're reminded of your dehydration by he faucet that is dripping slowly. There's a cup lying on the floor. ", ["cup"] ),
 
@@ -27,9 +25,9 @@ map.locations = {
   
   area5: new Location ("office", "An office belonging to head surgeon. The charts and graphs that line the wall make little sense to you. The desk with the small safe underneath catches your eye.", ["safe"]),
   
-  area6: new Location ("lobby","There's a large group of zombies in front of you! You can't progress unless you have a way to get rid of them."),
+  area6: new Location ("lobby","There's a large group of zombies in front of you! You can't progress unless you have a way to get rid of them.", ["crowbar"]),
   
-  area7: new Location ("parking lot", "The parking lot is virtually empty. The few remaining cars have been siphoned of gas.")
+  area7: new Location ("parking lot", "You check all the cars in the parking lot. Each one you check has been siphoned of gas until you reach a red pickup truck. The keys are left in the ignition, but the car won't start. You may be able to jump start it somehow.")
 };
 
 map.arr = [
@@ -44,8 +42,6 @@ map.locations.area6,
 map.locations.area7,
 
 ];
-
-//document.querySelector('#descri p').innerHTML = area0.description;
 
 map.connections = [
 
