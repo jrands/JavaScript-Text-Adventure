@@ -18,14 +18,14 @@
         
         
         <output id="scene">
-            <label id="loc">Current Location = </label>
+            <label id="loc"></label>
             <p id="descrip">
             </p>
-            <label for="action"> What will you do? </label>
+            <label for="action"></label>
         </output>
 
         <section>
-            <input id="action" type="text" placeholder="Enter an action"/>
+            <input id="action" type="text" placeholder="..."/>
         </section>
       
     </main>
@@ -33,17 +33,16 @@
     <aside id="inventory">
         <h1> Inventory </h1>
         <ul id="items">
-          <li>
-          </li>
+         
         </ul>
     </aside>
 
     <aside id="help">
         <h1> Available Actions </h1>
         <ul> 
-          <li>pickup</li>
-          <li>examine</li>
-          <li>moveto</li>   
+          <li>take</li>
+          <li>moveto</li>
+          <li>use</li>   
         </ul>
     </aside>
 
@@ -52,6 +51,7 @@
     </footer>
     <script src="location.js"></script>
     <script src="game.js"></script>
+    <script src="items.js"></script>
     
     
 </body>
